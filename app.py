@@ -16,7 +16,7 @@ def analyze():
     file = request.files['file']
     filename = file.filename
     # Aquí podrías guardar el archivo si quieres:
-    # file.save(os.path.join("uploads", filename))
+     file.save(os.path.join("uploads", filename))
 
     # Simulación de análisis
     return jsonify({
