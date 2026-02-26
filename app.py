@@ -22,9 +22,11 @@ def analyze():
     return jsonify({
         "mercalli_estimado": "VI",
         "descripcion": "Daños leves a moderados en estructuras",
-        "confianza": 0.82,
-        "recibido": filename
+        "confianza": 0.82
     })
+
+
+       # "recibido": filename
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
