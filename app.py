@@ -32,13 +32,15 @@ def analyze():
     })
 
 # Endpoint de prueba para mensajes simples (Kodular)
-@app.route('/mensaje', methods=['POST'])
-def recibir_mensaje():
-    data = request.json
-    texto = data.get("mensaje", "")
-    return jsonify({
-        "status": "recibido",
-        "respuesta": f"Tu mensaje fue: {texto}"
+@app.route('/mensaje-text', methods=['POST'])
+def prueba():
+    return "RUTA TEST ACTIVA"
+#def recibir_mensaje():
+#    data = request.json
+#    texto = data.get("mensaje", "")
+#    return jsonify({
+#        "status": "recibido",
+#        "respuesta": f"Tu mensaje fue: {texto}"
     })
 
 if __name__ == '__main__':
