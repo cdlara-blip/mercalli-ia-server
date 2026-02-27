@@ -35,7 +35,7 @@ def analyze():
 @app.route('/mensaje', methods=['POST'])
 def recibir_mensaje():
     data = request.json
-    texto = data.get("texto", "")
+    texto = data.get("mensaje", "")
     return jsonify({
         "status": "recibido",
         "respuesta": f"Tu mensaje fue: {texto}"
