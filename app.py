@@ -9,12 +9,12 @@ def home():
 # Mini laboratorio de prueba
 @app.route('/mensaje', methods=['POST'])
 def mensaje():
-    data = request.json
+    data = request.get_json(force=True, silent = True)
     
-    if not data or 'mensaje' not in data:
+    if not data :
         return jsonify({"respuesta": "No se recibió mensaje"}), 400
     
-    texto = data['mensaje']
+    texto = data.get("mensaje")
     
     return jsonify({
         "respuesta": f"Servidor recibió: {texto}"
