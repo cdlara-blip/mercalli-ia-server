@@ -27,6 +27,7 @@ def mensaje():
         "confirmacion": f"Ubicación {lat}, {lon} guardada con éxito"
     })
 
+
 if __name__ == "__main__":
     # Importante: el puerto 5000 es el que Replit usa por defecto en esta vista
     app.run(host='0.0.0.0', port=5000)
