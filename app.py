@@ -2,23 +2,31 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+# Ruta principal para verificar que el servidor vive
 @app.route('/')
 def home():
-    return "Servidor Mercalli activo"
+    return "Servidor MercalliVision Activo y Listado"
 
-# Mini laboratorio de prueba
-@app.route('/mensaje', methods=['POST'])
+# Esta es la ruta que usará Kodular (asegúrate que tu URL termine en /mensaje)
+@app.route("/mensaje", methods=["POST"])
 def mensaje():
-    data = request.get_json(force=True, silent = True)
+    # Recibimos el JSON de Kodular
+    data = request.get_json(force=True, silent=True) or {}
     
-    if not data :
-        return jsonify({"respuesta": "No se recibió mensaje"}), 400
-    
-    texto = data.get("mensaje")
-    
+    lat = data.get("lat", "Sin GPS")
+    lon = data.get("lon", "Sin GPS")
+    msg = data.get("mensaje", "Sin texto")
+
+    # Esto se verá en la pestaña 'Console' de Replit
+    print(f"--- NUEVO REPORTE ---")
+    print(f"📍 Coordenadas: {lat}, {lon}")
+    print(f"💬 Mensaje: {msg}")
+
     return jsonify({
-        "respuesta": f"Servidor recibió: {texto}"
+        "status": "recibido",
+        "confirmacion": f"Ubicación {lat}, {lon} guardada con éxito"
     })
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=81)
+if __name__ == "__main__":
+    # Importante: el puerto 5000 es el que Replit usa por defecto en esta vista
+    app.run(host='0.0.0.0', port=5000)
