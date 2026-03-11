@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# Ruta principal para verificar que el servidor vive
+# Ruta principal para verificar que el servidor 
 @app.route('/')
 def home():
     return "Servidor MercalliVision Activo y Listado"
